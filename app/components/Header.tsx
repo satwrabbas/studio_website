@@ -7,7 +7,7 @@ import { useLanguage } from "@/app/context/LanguageContext";
 
 const translations = {
   ar: {
-    navContact: "تواصل معي",
+    navContact: "تواصل معنا",
   },
   en: {
     navContact: "Contact",
@@ -33,7 +33,7 @@ export default function Header({ onContactClick }: HeaderProps) {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-zinc-900/90 backdrop-blur-md shadow-lg py-3"
+          ? "py-3"
           : "bg-transparent py-4 md:py-6"
       }`}
     >
@@ -50,9 +50,7 @@ export default function Header({ onContactClick }: HeaderProps) {
             />
           </div>
 
-          <span className="text-lg md:text-xl font-bold font-mono tracking-tighter text-zinc-100">
-            ABCE-S
-          </span>
+          
         </div>
 
         <div className="flex items-center gap-2 md:gap-4">

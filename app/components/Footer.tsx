@@ -30,6 +30,22 @@ export default function Footer() {
 
       <div className="max-w-4xl mx-auto relative z-10 text-center">
         <div className="mb-12">
+          <div className="relative w-40 h-40 mx-auto mb-6 group">
+            <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full group-hover:bg-emerald-500/30 transition-all duration-500"></div>
+            <Image
+              src="/adorable-pleading.gif"
+              alt="Hire me please cute anime"
+              width={160}
+              height={160}
+              unoptimized
+              className="relative w-full h-full object-cover rounded-2xl border-2 border-zinc-800/50 shadow-2xl hover:scale-105 transition-transform duration-300"
+            />
+
+            <div className="absolute -right-4 -top-4 bg-white text-zinc-950 text-xs font-bold px-3 py-1 rounded-full shadow-lg rotate-12 animate-bounce">
+              ?Please
+            </div>
+          </div>
+
           <h2 className="text-3xl md:text-5xl font-bold text-zinc-100 mb-4 tracking-tight">
             {txt.ready}
           </h2>

@@ -1,20 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
+import { Project } from "../types/project";
 
 interface ProjectProps {
-  project: {
-    id: number;
-    title_ar: string;
-    title_en: string;
-    description_ar: string;
-    description_en: string;
-    image_url: string;
-    image_mobile_url?: string;
-    tags: string[];
-    demo_url?: string;
-    github_url?: string;
-  };
+  project: Project;
   lang: "ar" | "en";
 }
 
@@ -24,6 +14,7 @@ export default function ProjectCard({ project, lang }: ProjectProps) {
   const title = isAr
     ? project.title_ar || project.title_en
     : project.title_en || project.title_ar;
+
   const description = isAr
     ? project.description_ar || project.description_en
     : project.description_en || project.description_ar;
@@ -33,9 +24,8 @@ export default function ProjectCard({ project, lang }: ProjectProps) {
   return (
     <div className="group relative bg-zinc-900 border border-zinc-800 rounded-xl md:rounded-2xl overflow-hidden hover:border-zinc-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/50 flex flex-col">
       {/* 
-         التعديل الأول:
-         جعلنا z-10 بدلاً من z-0
-         هذا يجعل الرابط الشفاف "يطفو" فوق الصور والنصوص
+        Main Card Link Layer (z-10)
+        يغطي كامل الكارد ليكون قابلاً للنقر
       */}
       <Link
         href={`/project/${project.id}`}
@@ -100,9 +90,8 @@ export default function ProjectCard({ project, lang }: ProjectProps) {
         </div>
 
         {/* 
-            التعديل الثاني:
-            جعلنا z-20 بدلاً من z-10
-            لكي تكون الأزرار فوق الرابط الشفاف (الذي أصبح z-10) فتستجيب للنقر
+          Action Buttons Layer (z-20)
+          أزرار تفاعلية تعلو فوق رابط الكارد الشفاف
         */}
         <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-zinc-800 relative z-20 pointer-events-auto">
           {project.demo_url && (
