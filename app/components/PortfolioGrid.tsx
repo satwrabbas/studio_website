@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import { createClient } from "../lib/supabase";
 import { translations } from "../constants/translations";
+import { useTheme } from "@/app/context/ThemeContext";
 
 interface PortfolioGridProps {
   lang: "ar" | "en";
@@ -10,46 +14,133 @@ interface PortfolioGridProps {
 
 export default function PortfolioGrid({ lang }: PortfolioGridProps) {
   const [projects, setProjects] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
   const t = translations[lang];
   const supabase = createClient();
 
+  const { themeColors, isDarkMode, colorPalette } = useTheme();
+
   useEffect(() => {
     async function fetchProjects() {
-      const { data, error } = await supabase
-        .from("projects")
-        .select("*")
-        .order("created_at", { ascending: false });
+      try {
+        const { data, error } = await supabase
+          .from("projects")
+          .select("*")
+          .order("created_at", { ascending: false });
 
-      if (error) {
+        if (error) throw error;
+        if (data) setProjects(data);
+      } catch (error: any) {
         console.error("Error fetching projects:", error.message);
-      } else if (data) {
-        setProjects(data);
+      } finally {
+        setLoading(false);
       }
     }
     fetchProjects();
-  }, []);
+  }, [supabase]);
+
+  const getGlowColor = () => {
+    if (isDarkMode) {
+      switch (colorPalette) {
+        case "slate":
+          return "bg-blue-500/10";
+        case "stone":
+          return "bg-orange-500/10";
+        default:
+          return "bg-zinc-500/10";
+      }
+    } else {
+      switch (colorPalette) {
+        case "slate":
+          return "bg-blue-400/30";
+        case "stone":
+          return "bg-orange-400/30";
+        default:
+          return "bg-zinc-400/30";
+      }
+    }
+  };
 
   return (
-    <section id="portfolio" className="py-12 md:py-24 bg-zinc-900/50 px-4 md:px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12 gap-4 border-b border-zinc-800 pb-6 md:pb-8">
+    <section
+      id="portfolio"
+      className={`relative py-12 md:py-24 px-4 md:px-6 overflow-hidden transition-colors duration-500 ${themeColors.bg}`}
+    >
+      {/* 
+         4. عنصر الإضاءة المركزية (Glow Element)
+         يقع خلف المحتوى مباشرة
+      */}
+      <div
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 md:w-225 md:h-375 blur-[120px] rounded-full pointer-events-none transition-colors duration-1000
+        ${getGlowColor()}`}
+      />
+
+      <div className="max-w-5xl mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className={`flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 gap-4 border-b pb-8 transition-colors duration-500 ${themeColors.border}`}
+        >
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+            <h2
+              className={`text-3xl md:text-4xl font-bold mb-3 transition-colors duration-500 ${themeColors.textMain}`}
+            >
               {t.latestWork}
             </h2>
-            <p className="text-sm md:text-base text-zinc-400">{t.workSub}</p>
+            <p
+              className={`max-w-md transition-colors duration-500 ${themeColors.textSub}`}
+            >
+              {t.workSub}
+            </p>
           </div>
-        </div>
+        </motion.div>
 
-        {projects.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} lang={lang} />
+        {loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {[1, 2].map((n) => (
+              <div
+                key={n}
+                className={`h-80 animate-pulse rounded-2xl border transition-colors duration-500
+                  ${themeColors.border}
+                  ${isDarkMode ? "bg-white/5" : "bg-black/5"} 
+                `}
+              />
             ))}
           </div>
         ) : (
-          <div className="text-center py-12 md:py-20 text-zinc-500 bg-zinc-900 rounded-2xl border border-dashed border-zinc-800">
-            {t.loading}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{
+                  opacity: 0,
+                  y: 50,
+                  filter: "blur(8px)",
+                  scale: 0.9,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  filter: "blur(0px)",
+                  scale: 1,
+                }}
+                viewport={{
+                  once: false,
+                  amount: 0.1,
+                  margin: "0px 0px -20px 0px",
+                }}
+                transition={{
+                  duration: 0.7,
+                  ease: [0.21, 0.47, 0.32, 0.98],
+                  delay: (index % 2) * 0.2,
+                }}
+              >
+                <ProjectCard project={project} lang={lang} />
+              </motion.div>
+            ))}
           </div>
         )}
       </div>
