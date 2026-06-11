@@ -11,6 +11,7 @@ import {
 
 import { useTheme } from "@/app/context/ThemeContext";
 
+// 🏢 صياغة مؤسسية واحترافية بالكامل كفريق عمل لشركة برمجيات واستوديو رقمي 🏢
 const timelineData = [
   {
     id: 1,
@@ -18,12 +19,12 @@ const timelineData = [
     year: "The Foundation",
     icon: FaFingerprint,
     title: {
-      ar: "صقل المهارات الفردية",
-      en: "Mastering the Crafts",
+      ar: "الانطلاقة وتجميع الخبرات",
+      en: "Consolidating Core Talent",
     },
     description: {
-      ar: "قبل أن نصبح ABCE، أمضى كل منا سنوات في تخصصه. أنا في هندسة البرمجيات والأنظمة المعقدة، وشريكتي في فنون التصميم والبصريات. كنا نبني الأساس المتين.",
-      en: "Before ABCE, we spent years sharpening our individual edges. One deep in code architecture, the other mastering visuals. Building the solid foundation.",
+      ar: "بدأنا كمجموعة من المطورين والمصممين المحترفين، يجمعنا هدف واحد: صقل مهاراتنا الفردية وتقديم حلول رقمية تتجاوز التوقعات وتحدث تأثيراً حقيقياً في السوق.",
+      en: "We started as a group of professional developers and designers, united by a single goal: to sharpen our collective expertise and deliver impactful digital solutions.",
     },
     color: "from-zinc-500 to-zinc-400",
   },
@@ -33,12 +34,12 @@ const timelineData = [
     year: "The Synergy",
     icon: FaHandshake,
     title: {
-      ar: "لقاء الكود بالفن",
-      en: "The Convergence",
+      ar: "التكامل البرمجي والتصميمي",
+      en: "Engineering & Visual Synergy",
     },
     description: {
-      ar: "أدركنا أن الكود وحده جامد، والتصميم وحده ساكن. بدأنا التعاون لسد الفجوة، وولد مبدأنا: التقنية يجب أن تكون جميلة، والجمال يجب أن يكون وظيفياً.",
-      en: "We realized code alone is rigid, and design alone is static. We joined forces to bridge the gap: Technology must be beautiful, and beauty must be functional.",
+      ar: "نجحنا في دمج التفكير البرمجي الهندسي مع الابتكار التصميمي الفني، لتعمل الأقسام التقنية والإبداعية بتناغم تام كفريق عمل واحد لتقديم مشاريع متكاملة وخالية من العيوب.",
+      en: "We integrated robust engineering with visual innovation, enabling our development and creative departments to work in absolute harmony as one unified team.",
     },
     color: "from-blue-500 to-cyan-400",
   },
@@ -48,16 +49,16 @@ const timelineData = [
     year: "NOW - Inception",
     icon: FaRocket,
     title: {
-      ar: "ولادة استوديو ABCE",
-      en: "Inception of ABCE",
+      ar: "تأسيس استوديو ABCE المتكامل",
+      en: "ABCE Creative Studio Launch",
     },
     description: {
-      ar: "نحن في مرحلة التحول من 'مستقلين' إلى 'كيان مؤسسي'. نؤسس استوديو للتجارب الرقمية الغامرة، ونفتح الباب لعدد محدود من الشركاء المؤسسين.",
-      en: "Transitioning from freelancers to a Creative Studio. We are currently opening our doors to a select few partners to become our first success stories.",
+      ar: "نقف اليوم كاستوديو رقمي متكامل ومؤسس رسمياً. نوفر حلولاً برمجية وتصميمية متطورة للشركات والمؤسسات الطامحة للريادة والابتكار في العصر الرقمي.",
+      en: "Today, we operate as a fully established creative agency. We deliver advanced web, mobile, and design solutions to forward-thinking enterprises and brands.",
     },
     badge: {
-      ar: "مرحلة التأسيس",
-      en: "Founding Phase",
+      ar: "التأسيس والنمو",
+      en: "Growth & Scaling",
     },
     color: "from-emerald-500 to-green-400",
     glow: true,
@@ -68,12 +69,12 @@ const timelineData = [
     year: "Future Vision",
     icon: FaLightbulb,
     title: {
-      ar: "التوسع والابتكار (R&D)",
-      en: "Evolution & R&D",
+      ar: "الابتكار الرقمي والتوسع",
+      en: "The Next-Gen Digital Era",
     },
     description: {
-      ar: "رؤيتنا لا تتوقف هنا. نبني فريقاً من فناني الـ 3D ومطوري WebGL لدفع حدود الويب إلى مناطق لم تُرَ من قبل.",
-      en: "Our vision doesn't stop here. We are actively building a multidisciplinary team of 3D artists and WebGL wizards to push the boundaries of the web.",
+      ar: "رؤيتنا تتجاوز الحاضر؛ نحن نستثمر باستمرار في الأبحاث والتطوير (R&D) وفي تقنيات الويب ثلاثية الأبعاد التفاعلية لتدريب وتوسيع فريقنا وقيادة مستقبل الابتكار البرمجي.",
+      en: "Our vision transcends the present. We are continuously investing in R&D and Web3D engineering, scaling our team to pioneer the next generation of web interfaces.",
     },
     color: "from-purple-500 to-pink-500",
   },
@@ -121,10 +122,7 @@ export default function TimelineSection({ lang }: TimelineProps) {
       ref={containerRef}
       className={`relative py-24 overflow-hidden transition-colors duration-700 ${themeColors.bg}`}
     >
-      {/* 
-        1. الإضاءة المركزية الجديدة (Central Glow) 
-        تتمركز في وسط القسم تماماً
-      */}
+      {/* الإضاءة الخلفية */}
       <div
         className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-102.5 h-250 md:w-150 md:h-250 blur-[120px] rounded-full pointer-events-none transition-colors duration-1000
         ${getGlowColor()}`}
@@ -139,7 +137,7 @@ export default function TimelineSection({ lang }: TimelineProps) {
             className={`text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-b pb-2
               ${isDarkMode ? "from-white to-zinc-500" : "from-zinc-900 to-zinc-500"}`}
           >
-            {lang === "ar" ? "رحلتنا" : "Our Journey"}
+            {lang === "ar" ? "مسيرتنا كفريق" : "Our Journey"}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -150,8 +148,8 @@ export default function TimelineSection({ lang }: TimelineProps) {
               ${isDarkMode ? "text-zinc-400" : "text-zinc-600"}`}
           >
             {lang === "ar"
-              ? "من العمل الفردي إلى بناء كيان إبداعي متكامل"
-              : "From solo craftsmanship to a unified creative entity"}
+              ? "مراحل تطورنا وتكامل خدماتنا الرقمية كفريق عمل واحد"
+              : "The milestones of our collective growth as a unified studio"}
           </motion.p>
         </div>
 
