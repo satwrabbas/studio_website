@@ -1,3 +1,4 @@
+//app\types\project.ts
 export interface Project {
   id: number;
   title_ar: string;

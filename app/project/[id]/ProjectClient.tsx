@@ -1,3 +1,4 @@
+//app\project\[id]\ProjectClient.tsx
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 

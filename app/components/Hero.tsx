@@ -1,3 +1,4 @@
+//app\components\Hero.tsx
 "use client";
 import Image from "next/image";
 import { FaRocket } from "react-icons/fa";

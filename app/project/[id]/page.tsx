@@ -1,3 +1,4 @@
+//app\project\[id]\page.tsx
 import { Metadata } from "next";
 import { createClient } from "@supabase/supabase-js";
 import ProjectClient from "./ProjectClient";

@@ -1,3 +1,4 @@
+//app\constants\translations.ts
 export const translations = {
   ar: {
     navHome: "الرئيسية",

@@ -1,3 +1,4 @@
+//app\project\[id]\loading.tsx
 "use client";
 
 import { useTheme } from "@/app/context/ThemeContext";
