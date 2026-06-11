@@ -17,7 +17,7 @@ export default function Footer() {
       rights: "جميع الحقوق محفوظة.",
       available: "متاحون للعمل",
       contactBtn: "تواصل معنا عبر واتساب",
-      badge: "دعنا نتحدث! 🚀"
+      badge: "دعنا نتحدث! 🚀",
     },
     en: {
       ready: "Ready to launch your next project?",
@@ -25,7 +25,7 @@ export default function Footer() {
       rights: "All rights reserved.",
       available: "Available for work",
       contactBtn: "Contact via WhatsApp",
-      badge: "Let's Talk! 🚀"
+      badge: "Let's Talk! 🚀",
     },
   };
 
@@ -33,21 +33,27 @@ export default function Footer() {
 
   // رقم الواتساب مع المفتاح الدولي (بدون أصفار في البداية أو علامة +)
   // افترضت المفتاح السوري 963 بناءً على الرقم، يمكنك تغييره إذا لزم الأمر
-  const whatsappNumber = "963938457732"; 
+  const whatsappNumber = "963938457732";
   const whatsappLink = `https://wa.me/${whatsappNumber}`;
 
   const getGlowColor = () => {
     if (isDarkMode) {
       switch (colorPalette) {
-        case "slate": return "bg-blue-500/10";
-        case "stone": return "bg-orange-500/10";
-        default: return "bg-zinc-500/10";
+        case "slate":
+          return "bg-blue-500/10";
+        case "stone":
+          return "bg-orange-500/10";
+        default:
+          return "bg-zinc-500/10";
       }
     } else {
       switch (colorPalette) {
-        case "slate": return "bg-blue-400/30";
-        case "stone": return "bg-orange-400/30";
-        default: return "bg-zinc-400/30";
+        case "slate":
+          return "bg-blue-400/30";
+        case "stone":
+          return "bg-orange-400/30";
+        default:
+          return "bg-zinc-400/30";
       }
     }
   };
@@ -65,14 +71,15 @@ export default function Footer() {
 
       <div className="max-w-4xl mx-auto relative z-10 text-center">
         <div className="mb-12">
-          
           {/* Logo Profile / Avatar replacement for GIF */}
           <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 group flex items-center justify-center">
             {/* Animated Glow */}
             <div className="absolute inset-0 bg-emerald-500/20 blur-3xl rounded-full group-hover:bg-emerald-500/40 transition-all duration-500 animate-pulse"></div>
-            
-            <div className={`relative w-full h-full flex items-center justify-center rounded-3xl border-2 shadow-2xl backdrop-blur-sm transition-all duration-500 group-hover:scale-105 group-hover:rotate-3
-              ${isDarkMode ? "border-white/10 bg-white/5" : "border-black/10 bg-black/5"}`}>
+
+            <div
+              className={`relative w-full h-full flex items-center justify-center rounded-3xl border-2 shadow-2xl backdrop-blur-sm transition-all duration-500 group-hover:scale-105 group-hover:rotate-3
+              ${isDarkMode ? "border-white/10 bg-white/5" : "border-black/10 bg-black/5"}`}
+            >
               <Image
                 src="/logo.svg"
                 alt="ABCE-S Studio"
@@ -91,10 +98,14 @@ export default function Footer() {
             </div>
           </div>
 
-          <h2 className={`text-3xl md:text-5xl font-bold mb-4 tracking-tight transition-colors duration-300 ${themeColors.textMain}`}>
+          <h2
+            className={`text-3xl md:text-5xl font-bold mb-4 tracking-tight transition-colors duration-300 ${themeColors.textMain}`}
+          >
             {txt.ready}
           </h2>
-          <p className={`text-lg mb-8 max-w-2xl mx-auto transition-colors duration-300 ${themeColors.textSub}`}>
+          <p
+            className={`text-lg mb-8 max-w-2xl mx-auto transition-colors duration-300 ${themeColors.textSub}`}
+          >
             {txt.sub}
           </p>
 
@@ -111,7 +122,9 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className={`h-px w-full mb-8 bg-gradient-to-r from-transparent via-current to-transparent opacity-20 ${themeColors.textSub}`}></div>
+        <div
+          className={`h-px w-full mb-8 bg-gradient-to-r from-transparent via-current to-transparent opacity-20 ${themeColors.textSub}`}
+        ></div>
 
         {/* Footer Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
@@ -124,20 +137,28 @@ export default function Footer() {
                 height={24}
                 className={`w-6 h-6 ${!isDarkMode && "invert"}`}
               />
-              <span className={`font-bold tracking-tighter ${themeColors.textMain}`}>
+              <span
+                className={`font-bold tracking-tighter ${themeColors.textMain}`}
+              >
                 ABCE-S
               </span>
             </div>
-            <div className={`h-4 w-px bg-current opacity-20 ${themeColors.textSub}`}></div>
+            <div
+              className={`h-4 w-px bg-current opacity-20 ${themeColors.textSub}`}
+            ></div>
 
-            <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full border transition-colors duration-300 ${isDarkMode ? "bg-white/5 border-white/10" : "bg-black/5 border-black/5"}`}>
+            <div
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full border transition-colors duration-300 ${isDarkMode ? "bg-white/5 border-white/10" : "bg-black/5 border-black/5"}`}
+            >
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
-              <span className={`text-[11px] font-medium uppercase tracking-wider ${themeColors.textSub}`}>
+              <span
+                className={`text-[11px] font-medium uppercase tracking-wider ${themeColors.textSub}`}
+              >
                 {txt.available}
               </span>
             </div>
           </div>
-          
+
           <div className="text-center md:text-right">
             <p className={`text-sm ${themeColors.textSub}`}>
               © {new Date().getFullYear()} ABCE-S. {txt.rights}
